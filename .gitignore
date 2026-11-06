@@ -1,9 +1,9 @@
 .gradle/
-.idea/
-build/
 **/build/
 local.properties
 *.keystore
 *.jks
-*.apk
-*.idsig
+signing.properties
+.idea/
+*.iml
+captures/

@@ -1,0 +1,19 @@
+PASS favourites survive a fresh Store
+PASS playlist create, edit and persist
+PASS local library scanner and duration filter
+PASS embedded ID3 lyrics and local override
+PASS background import is bounded and decodable
+PASS light, dark and system screens render
+PASS playback starts, advances, pauses, seeks and resumes
+PASS queue reorder preserves the playing song
+PASS media session transport controls work
+PASS folder exclusion is applied by the real scanner
+PASS backgrounding Activity keeps playback running
+PASS headphone disconnect pauses playback (simulated receiver)
+PASS notification has media controls and no X action
+PASS one-minute timer stops real background playback
+PASS finish-song timer stops at completion without advancing
+PASS timer cancellation clears pending stop
+PASS saved queue and position survive Store reload
+PASS removing the task stops music, timer and notification
+RESULT: 18 distinct integration checks verified on API 23.

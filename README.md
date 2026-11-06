@@ -1,37 +1,63 @@
-<div align="center">
+<p align="center"><img src="assets/branding/lunera-logo.svg" width="110" alt="Lunera Lite logo"></p>
+<h1 align="center">Lunera Lite</h1>
+<p align="center">Your music, kept simple.</p>
+<p align="center">A local music player for Android 6.0 and newer, maintained within Grimmoir Organization.</p>
+<p align="center"><a href="https://github.com/Grimmoir-Organization/Lunera-Lite/releases">Download APK</a> · <a href="docs/FEATURES.md">Features</a> · <a href="LICENSE">GPL-3.0</a></p>
 
-<img src="assets/branding/lunera-logo.svg" alt="Lunera project logo" width="112" height="112">
+Lunera Lite uses a small native Android interface and the system audio engine. It keeps local playlists, lyrics, custom backgrounds and useful playback controls without decorative animations or scheduled background scanning.
 
-# Lunera Lite
+## Features
 
-**A lightweight local music player being planned for older Android devices.**
+- All songs, folders/subfolders, search, sorting, favourites and editable playlists.
+- Focus button to find the current or last-played song.
+- Editable queue, shuffle/repeat and saved playback position.
+- Background playback with notification, lock-screen and headset controls.
+- Sleep timer with an optional finish-current-song setting.
+- Embedded/imported local lyrics, synchronized highlighting and timing edits.
+- Embedded/custom artwork, custom backgrounds, themes and accent colours.
+- Folder/duration filters, manual rescan and manual update check.
 
-<a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL_v3.0-24292F?style=for-the-badge" alt="GPL v3.0"></a>
+**Removing Lite from Recents stops playback.** Switching apps or locking the screen keeps music playing. There is no app-provided notification X button. Playback speed is excluded.
 
-A **Grimmoir Organization** project.
+Hold a song to open favourite, playlist, queue, lyrics and artwork options. Hold a queue item to move or remove it. Hold a folder to exclude it and its subfolders.
 
-</div>
+The minimum version is Android 6.0 (API 23). See [testing](docs/TESTING.md) for the versions actually verified and remaining limits; a minimum SDK is not a claim that every phone has been tested.
 
-## Status
+## Screenshot
 
-This is the starter repository for the next Lunera Lite edition. Its features and final Android compatibility are still being selected. The target is older Android devices, including Android 5.0/6.0 and newer where the chosen features allow.
+<img src="assets/screenshots/android-6-library.png" width="260" alt="Lunera Lite library running on the Android 6 emulator">
 
-The earlier Lite draft is set aside. This starter contains no app implementation, Gradle app project or APK. It is not a buildable application or a published release.
+Android 6 emulator with generated test audio and an imported test background. Test music and test images are not bundled in the APK.
 
-## Feature selection
+## Install
 
-Use [FEATURE_SELECTION.md](FEATURE_SELECTION.md) to choose what should be kept, simplified or removed before implementation starts. No feature is assumed approved by this starter.
+Download `Lunera-Lite-1.0.0.apk` from Releases and allow installation from your browser/file manager. Grant audio access so Lite can scan local files. On Android 13+, allow notifications for playback controls. Lite has its own package and installs alongside regular Lunera.
 
-## Related project
+## Build
 
-[Regular Lunera](https://github.com/Grimmoir-Organization/Lunera) is the full local music player. The two editions will have separate release histories and APKs.
+Requirements: JDK 17, Android SDK platform 35 and Build Tools 35.0.0. Gradle 8.10.2 is pinned by the wrapper and verified with its SHA-256 checksum.
 
-## Future downloads
+```sh
+./gradlew :app:assembleDebug :app:lintDebug
+sh scripts/test-core.sh
+```
 
-Approved Lite releases will be listed under this repository's [Releases](https://github.com/Grimmoir-Organization/Lunera-Lite/releases). No Lite release files are provided in this starter package.
+On Windows use `gradlew.bat :app:assembleDebug :app:lintDebug`. A release can be produced using `:app:assembleRelease`; sign it with your private release key. The public repository contains no signing credentials.
 
-## License
+The dependency-free fallback build uses the same Java source and resources:
 
-GNU General Public License v3.0. See [LICENSE](LICENSE). The shared project logo is included for Lunera branding; this starter does not assign a separate Lite logo or finalized app design.
+```sh
+export JAVA_HOME=/path/to/jdk-17
+export ANDROID_HOME=/path/to/android-sdk
+python3 scripts/build-sdk.py
+```
 
-Maintained within [Grimmoir Organization](https://github.com/Grimmoir-Organization).
+It produces an unsigned APK under `app/build/sdk/`. Sign and verify it using Android SDK `apksigner` before distribution.
+
+For on-device regression checks, see [testing](docs/TESTING.md). Source archives contain project files, the Gradle wrapper, documentation and assets. SDKs, caches, build outputs, APKs and signing keys are excluded.
+
+## License and credits
+
+GPL-3.0; see [LICENSE](LICENSE). A Lunera project maintained within Grimmoir Organization. Contributors: [dinesh2068](https://github.com/dinesh2068) and [rufusgrimmoir](https://github.com/rufusgrimmoir).
+
+The Lunera crescent/music-note logo is retained from Lunera. This Lite implementation is a new native Android implementation of the selected Lunera features; regular Lunera's eight-module source remains a separate project. The Gradle wrapper is distributed under the Apache License 2.0; see [third-party notices](NOTICE.md).
