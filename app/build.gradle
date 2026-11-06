@@ -1,0 +1,17 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'org.grimmoir.lunera.lite'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    defaultConfig {
+        applicationId 'org.grimmoir.lunera.lite'
+        minSdk 23
+        targetSdk 35
+        versionCode 10000
+        versionName '1.0.0'
+        testInstrumentationRunner 'org.grimmoir.lunera.lite.LiteInstrumentation'
+    }
+    buildTypes { release { minifyEnabled false } }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+    lint { abortOnError true }
+}
